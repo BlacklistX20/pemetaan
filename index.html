@@ -92,15 +92,16 @@
           // Display the longitude and latitude values
           lngDisplay.textContent = lng.toFixed(9);
           latDisplay.textContent = lat.toFixed(9);
+          // Get all the returned features
           const allFeatures = data.features;
-          console.log(allFeatures);
-          // For each returned feature, add elevation data to the elevations array.
+          // For each returned feature, add elevation data to the elevations array
           const elevations = allFeatures.map((feature) => feature.properties.ele);
-          console.log(elevations);
-          // In the elevations array, find the largest value.
+          // In the elevations array, find the largest value
           const highestElevation = Math.max(...elevations);
-          console.log(highestElevation); 
+          // Display the largest elevation value
           eleDisplay.textContent = `${highestElevation} mdpl`;
+          // Add zoom and rotation controls to the map.
+          map.addControl(new mapboxgl.NavigationControl());
         }
       </script>
 

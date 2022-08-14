@@ -57,6 +57,8 @@
           style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
           center: [119.48065582151219,  -5.1948511155886195], // starting position [lng, lat]
           zoom: 11.5 // starting zoom
+          // Add zoom and rotation controls to the map.
+          map.addControl(new mapboxgl.NavigationControl());
         });
   
         let lng;
@@ -100,8 +102,7 @@
           // Display the largest elevation value
           eleDisplay.textContent = `${highestElevation} mdpl`;
         }
-          // Add zoom and rotation controls to the map.
-          map.addControl(new mapboxgl.NavigationControl());
+          
       </script>
 
 </body>

@@ -54,22 +54,12 @@
                     <table class="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
-                                <th>Koordinat</th>
-                                <th>Curah Hujan</th>
-                                <th>Kelembapan Udara</th>
-                                <th>Suhu</th>
-                                <th>Ketinggian Tanah</th>
-                                <th>Komoditas yang Cocok</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                
                             </tr>
                         </tbody>
                     </table>

@@ -37,14 +37,19 @@ async function getElevation() {
     // Display the longitude and latitude values
     lngDisplay.textContent = lng.toFixed(9);
     latDisplay.textContent = lat.toFixed(9);
-    // Get all the returned features
-    const allFeatures = data.features;
-    // For each returned feature, add elevation data to the elevations array
-    const elevations = allFeatures.map((feature) => feature.properties.ele);
-    // In the elevations array, find the largest value
-    const highestElevation = Math.max(...elevations);
-    // Display the largest elevation value
-    eleDisplay.textContent = `${highestElevation} mdpl`;
+
+    $.ajax({
+        url:'https://api.open-elevation.com/api/v1/lookup',
+        data: {
+            locations: lat.toFixed(9)+','+lng.toFixed(9)
+        },
+        success:function(respond){
+            console.log(respond);
+            eleDisplay.textContent = `${respond.results[0].elevation} mdpl`;
+        }
+        
+    })
+    
 
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     $.ajax({
@@ -55,16 +60,6 @@ async function getElevation() {
             appid: '4cfffc39110ea2ff21e427fdc0988f41',
             units: 'metric'
         },
-        // url:' https://api.ambeedata.com/weather/latest/by-lat-lng',
-        // headers: {
-        //     'x-api-key' : '9a170f3a5cdb6940f619461704c3c8f6fd28165754507e905df392584e2832ec',
-        //     "Content-type": "application/json"
-        // },
-        // data:{
-        //     lat: lat.toFixed(9),
-        //     lng: lng.toFixed(9),
-            
-        // },
         success:function(respond){
             console.log(respond);
             // Curah hujan / 3 jam  dalam 5 hari * 6 = 30 hari

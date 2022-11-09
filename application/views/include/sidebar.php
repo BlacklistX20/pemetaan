@@ -14,7 +14,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="3">
                 <i class="fas fa-seedling"></i>
                 <span>Syarat Tumbuh Tanam</span></a>
         </li>
@@ -24,16 +24,16 @@
 
         <!-- Nav Item -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fa fa-history"></i>
-                <span>Riwayat</span></a>
+            <a class="nav-link" href="<?php echo base_url() . 'Admin/iklim'; ?>">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Database Iklim</span></a>
         </li>
 
         <!-- Nav Item -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Daftar Tumbuhan</span></a>
+            <a class="nav-link" href="<?php echo base_url() . 'Admin/riwayat'; ?>">
+                <i class="fa fa-history"></i>
+                <span>Riwayat</span></a>
         </li>
 
 </ul>

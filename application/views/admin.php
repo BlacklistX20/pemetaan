@@ -50,10 +50,10 @@
                         <h1 class="h3 mb-0 text-gray-800">Syarat Tumbuh Tanam</h1>
                     </div>
 
-                    <!-- Content -->
+                    <!-- Table Syarat Tumbuh Tanaman -->
                     <button type="button" class="btn btn-outline-success my-2" data-toggle="modal" data-target="#Tambah">Tambah</button>
 
-                    <table class="table table-bordered text-center table-striped">
+                    <table class="table table-bordered text-center table-striped table-responsive-sm">
                         <thead class="table-dark">
                             <tr>
                                 <th>NO</th>
@@ -88,18 +88,21 @@
                     </table>
 
                 </div>
-                <!-- End of Main Content -->
+                <!-- End of page Content -->
 
             </div>
-            <!-- End of Content Wrapper -->
+            <!-- End of Main Wrapper -->
 
         </div>
-        <!-- End of Page Wrapper -->
+        <!-- End of Content Wrapper -->
 
         <!-- Scroll to Top Button-->
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
+
+    </div>
+    <!-- End of Page Wrapper -->    
 
         <!-- Tambah Modal -->
         <div class="modal" id="Tambah">

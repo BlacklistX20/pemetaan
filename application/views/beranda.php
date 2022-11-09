@@ -24,7 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url() ?>asset/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="<?php echo base_url() ?>asset\style.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>asset/style.css" rel="stylesheet">
 
 </head>
 
@@ -98,13 +98,18 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12 col-md-6 mb-4">
+                        <div class="col-12 col-lg-4 mb-4">
                             <div class="card shadow flex-fill">
                                 <div class="card-header py-2">
                                     <h6 class="m-0 font-weight-bold text-primary">Parameter</h6>
                                 </div>
                                 <div class="card-body py-2">
-                                    <table>
+                                    <table class="table-borderless" style="width: 100%">
+                                        <colgroup>
+                                            <col style="width: 45%">
+                                            <col style="width: 10%">
+                                            <col style="width: 45%">
+                                        </colgroup>
                                         <tbody>
                                             <tr>
                                                 <td>Longitude</td>
@@ -141,13 +146,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 mb-4">
+                        <div class="col-12 col-lg-8 mb-4">
                             <div class="card shadow flex-fill">
                                 <div class="card-header py-2">
                                     <h6 class="m-0 font-weight-bold text-primary">Komoditas yang Cocok</h6>
                                 </div>
                                 <div class="card-body py-2">
-
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Komoditas</th>
+                                                <th>Curah Hujan</th>
+                                                <th>Kelembapan</th>
+                                                <th>Suhu</th>
+                                                <th>Ketinggian Tanah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

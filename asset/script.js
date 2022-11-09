@@ -80,23 +80,19 @@ async function getElevation() {
             })
             totalCurahHujan = totalCurahHujan / 5 * 30;
             totalKelembapan = totalKelembapan / respond.list.length;
-            console.log(respond.list.length);
             totalSuhu = totalSuhu / respond.list.length;
-            $('#curahHujan').text(totalCurahHujan);
-            $('#kelembapan').text(totalKelembapan);
-            $('#suhu').text(totalSuhu);
+            totalCurahHujan = totalCurahHujan.toFixed(2)
+            totalKelembapan = totalKelembapan.toFixed(2)
+            totalSuhu = totalSuhu.toFixed(2)
+            $('#curahHujan').text(function(){
+                return totalCurahHujan + " mm/bln";
+            });
+            $('#kelembapan').text(function(){
+                return totalKelembapan + " %";
+            });
+            $('#suhu').text(function(){
+                return totalSuhu + " C"
+            });
         }
     })
-    console.log(highestElevation);
 }
-
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-

@@ -83,4 +83,14 @@ class Admin extends CI_Controller {
 		$this->TabelModel->hapus_data($where,'syarat');
 		redirect('Admin/index');
 	}
+
+    public function riwayat ()
+    {
+        $this->load->view('admin_riwayat');
+    }
+
+    public function iklim ()
+    {
+        $this->load->view('admin_iklim');
+    }
 }

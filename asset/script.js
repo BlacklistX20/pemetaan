@@ -55,8 +55,8 @@ async function getElevation() {
     $.ajax({
         url:'https://api.openweathermap.org/data/2.5/forecast',
         data:{
-            lat: lat.toFixed(9),
-            lon: lng.toFixed(9),
+            lat: lat.toFixed(5),
+            lon: lng.toFixed(5),
             appid: '4cfffc39110ea2ff21e427fdc0988f41',
             units: 'metric'
         },
@@ -90,4 +90,6 @@ async function getElevation() {
             });
         }
     })
+
+    
 }

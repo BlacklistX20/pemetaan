@@ -91,6 +91,7 @@ class Admin extends CI_Controller {
 
     public function iklim ()
     {
-        $this->load->view('admin_iklim');
+        $data['tabel'] = $this->TabelModel->ambil_dataIklim()->result();
+        $this->load->view('admin_iklim', $data);
     }
 }

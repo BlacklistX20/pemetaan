@@ -24,4 +24,8 @@ class TabelModel extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    function ambil_dataIklim(){
+        return $this->db->get('iklim');
+    }
 }

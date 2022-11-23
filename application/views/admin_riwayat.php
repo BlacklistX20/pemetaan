@@ -18,8 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url() ?>asset/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- W3.css-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Custom styles for this page -->
+    <link href="<?php echo base_url() ?>asset/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -88,11 +88,17 @@
     <script src="<?php echo base_url() ?>asset/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?php echo base_url() ?>asset/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?php echo base_url() ?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-area-demo.js"></script>
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo base_url() ?>asset/js/demo/datatables-demo.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#riwayat").addClass("active");
+        });
+    </script>
 </body>
 
 </html>

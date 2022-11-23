@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-            <a class="nav-link" href="3">
+        <li class="nav-item" id="syarat">
+            <a class="nav-link" href="<?php echo base_url() . 'Admin/index'; ?>">
                 <i class="fas fa-seedling"></i>
                 <span>Syarat Tumbuh Tanam</span></a>
         </li>
@@ -23,14 +23,14 @@
     <hr class="sidebar-divider">
 
         <!-- Nav Item -->
-        <li class="nav-item">
+        <li class="nav-item" id="iklim">
             <a class="nav-link" href="<?php echo base_url() . 'Admin/iklim'; ?>">
                 <i class="fas fa-fw fa-table"></i>
                 <span>Database Iklim</span></a>
         </li>
 
         <!-- Nav Item -->
-        <li class="nav-item">
+        <li class="nav-item" id="riwayat">
             <a class="nav-link" href="<?php echo base_url() . 'Admin/riwayat'; ?>">
                 <i class="fa fa-history"></i>
                 <span>Riwayat</span></a>

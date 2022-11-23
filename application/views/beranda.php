@@ -43,7 +43,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
 
                     <!-- Topbar text -->
-                    <span class="text-gray-600 medium">Sistem Informasi Pemetaan Komoditas Pertanian</span>
+                    <span class="font-weight-bold text-gray-600 medium">Sistem Informasi Pemetaan Komoditas Pertanian</span>
 
                     <!-- Topbar Login -->
                     <ul class="navbar-nav ml-auto">
@@ -152,7 +152,8 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Komoditas yang Cocok</h6>
                                 </div>
                                 <div class="card-body py-2">
-                                    <table>
+                                    <table class="table table-bordered">
+                                        
                                         <thead>
                                             <tr>
                                                 <th>Komoditas</th>
@@ -164,11 +165,11 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                                <td>5</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -18,8 +18,8 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url() ?>asset/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- W3.css-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Custom styles for this page -->
+    <link href="<?php echo base_url() ?>asset/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -46,33 +46,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Riwayat</h1>
-                    </div>
+                    <h1 class="h3 mb-2 text-gray-800">Riwayat</h1>
 
                     <!-- Content -->
-                    <table class="table table-bordered text-center table-striped">
-                        <thead>
-                            <tr>
-                                <th>Koordinat</th>
-                                <th>Curah Hujan</th>
-                                <th>Kelembapan Udara</th>
-                                <th>Suhu</th>
-                                <th>Ketinggian Tanah</th>
-                                <th>Komoditas yang Cocok</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Koordinat (Lat - Long)</th>
+                                            <th>Curah Hujan (mm/day)</th>
+                                            <th>Kelembapan Udara (%)</th>
+                                            <th>Suhu (C)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($tabel as $tes) { ?>
+                                            <tr>
+                                                <td><?php echo $tes->Tanggal . "/" . $tes->Bulan . "/" . $tes->Tahun ?></td>
+                                                <td><?php echo $tes->Latitude . " - " . $tes->Longitude ?></td>
+                                                <td><?php echo $tes->Hujan ?></td>
+                                                <td><?php echo $tes->Kelembapan ?></td>
+                                                <td><?php echo $tes->Suhu ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- End of page Content -->
@@ -98,11 +102,17 @@
     <script src="<?php echo base_url() ?>asset/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="<?php echo base_url() ?>asset/vendor/chart.js/Chart.min.js"></script>
+    <script src="<?php echo base_url() ?>asset/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url() ?>asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-area-demo.js"></script>
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-pie-demo.js"></script>
+    <script src="<?php echo base_url() ?>asset/js/demo/datatables-demo.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#iklim").addClass("active");
+        });
+    </script>
 </body>
 
 </html>

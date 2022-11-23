@@ -271,13 +271,6 @@
     <!-- Custom scripts for all pages-->
     <script src="<?php echo base_url() ?>asset/js/sb-admin-2.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="<?php echo base_url() ?>asset/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-area-demo.js"></script>
-    <script src="<?php echo base_url() ?>asset/js/demo/chart-pie-demo.js"></script>
-
     <script>
         $('.btnEdit').click(function() {
             var idSyarat = $(this).data('id');
@@ -299,7 +292,7 @@
                 }
             })
 
-        })
+        });
         $('.btnHapus').click(function() {
             var idSyarat = $(this).data('id');
             $.ajax({
@@ -311,7 +304,11 @@
                     $('#hapusModal').modal('show');
                 }
             })
-        })
+        });
+
+        $(document).ready(function(){
+            $("#syarat").addClass("active");
+        });
     </script>
 
 </body>

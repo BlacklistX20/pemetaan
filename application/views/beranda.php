@@ -98,7 +98,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12 col-lg-4 mb-4">
+                        <div class="col-12 col-lg-5 mb-4">
                             <div class="card shadow flex-fill">
                                 <div class="card-header py-2">
                                     <h6 class="m-0 font-weight-bold text-primary">Parameter</h6>
@@ -146,14 +146,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-8 mb-4">
-                            <div class="card shadow flex-fill">
+                        <div class="col-12 col-lg-7 mb-4">
+                            <div class="card shadow">
                                 <div class="card-header py-2">
                                     <h6 class="m-0 font-weight-bold text-primary">Komoditas yang Cocok</h6>
                                 </div>
-                                <div class="card-body py-2">
+                                <div class="card-body py-2 d-flex align-items-center justify-content-center">
+                                    <div id="tampilanAwal">
+                                        <h2 style="line-height: 4.5;">Klik di Map</h2>
+                                    </div>
+                                    <div id="tidakCocok" class="text-center">
+                                        <h2 style="line-height: 4.5;">Tidak Ada Komoditas yang Cocok</h2>
+                                    </div>
                                     <table id="hasilKomoditas" class="table table-bordered">
-                                        
                                         <thead>
                                             <tr>
                                                 <th>Komoditas</th>

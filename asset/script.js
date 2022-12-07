@@ -26,6 +26,7 @@ map.on('click', (event) => {
 });
 
 $('#hasilKomoditas').hide();
+$('#tidakCocok').hide();
 
 async function getWeatherData() {
     // Construct the API request
@@ -91,7 +92,7 @@ async function getWeatherData() {
             lon: lng.toFixed(5)
         }
     })
-    console.log(curahHujan);
+    // console.log(curahHujan);
     $('#curahHujan').text(curahHujan.Hujan + " mm/bln");
 
     var daftarKomoditi = await $.ajax({
@@ -106,20 +107,29 @@ async function getWeatherData() {
         },
         type: "post"
     })
-    console.log(daftarKomoditi);
+    // console.log(daftarKomoditi);
 
-    $('#hasilKomoditas tbody').html('');
-    daftarKomoditi.forEach(function (row) {
-        $('#hasilKomoditas tbody').append(`
-            <tr>
-                <td>${row.Komoditas}</td>
-                <td>${row.HujanMin} - ${row.HujanMax} mm/bln</td>
-                <td>${row.KelembapanMin} - ${row.KelembapanMax} %</td>
-                <td>${row.SuhuMin} - ${row.SuhuMax} °C</td>
-                <td>${row.TanahMin} - ${row.TanahMax} mdpl</td>
-            </tr>
-        `);
-    })
+    if (daftarKomoditi.length == 0) {
+        $('#tampilanAwal').hide();
+        $('#hasilKomoditas').hide();
+        $('#tidakCocok').fadeIn();
+    } else {
+        $('#hasilKomoditas tbody').html('');
+        daftarKomoditi.forEach(function (row) {
+            $('#hasilKomoditas tbody').append(`
+                <tr>
+                    <td>${row.Komoditas}</td>
+                    <td>${row.HujanMin} - ${row.HujanMax} mm/bln</td>
+                    <td>${row.KelembapanMin} - ${row.KelembapanMax} %</td>
+                    <td>${row.SuhuMin} - ${row.SuhuMax} °C</td>
+                    <td>${row.TanahMin} - ${row.TanahMax} mdpl</td>
+                </tr>
+            `);
+        })
+        $('#tampilanAwal').hide();
+        $('#tidakCocok').hide();
+        $('#hasilKomoditas').fadeIn();
+    }
 
-    $('#hasilKomoditas').fadeIn();
+    
 } 

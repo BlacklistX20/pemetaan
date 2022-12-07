@@ -28,4 +28,9 @@ class TabelModel extends CI_Model
     function ambil_dataIklim(){
         return $this->db->get('iklim');
     }
+
+    public function riwayat($data, $table)
+    {
+        $this->db->insert($table,$data);
+    }
 }

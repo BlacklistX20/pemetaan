@@ -12,7 +12,6 @@ let lng;
 let lat;
 const lngDisplay = document.getElementById('lng');
 const latDisplay = document.getElementById('lat');
-const eleDisplay = document.getElementById('ele');
 const marker = new mapboxgl.Marker({
     'color': '#314ccd'
 });
@@ -23,10 +22,12 @@ map.on('click', (event) => {
     marker.setLngLat(event.lngLat).addTo(map);
     lng = event.lngLat.lng;
     lat = event.lngLat.lat;
-    getElevation();
+    getWeatherData();
 });
 
-async function getElevation() {
+$('#hasilKomoditas').hide();
+
+async function getWeatherData() {
     // Construct the API request
     const query = await fetch(
         `https://api.mapbox.com/v4/mapbox.mapbox-terrain-v2/tilequery/${lng},${lat}.json?layers=contour&limit=50&access_token=${mapboxgl.accessToken}`,
@@ -35,61 +36,90 @@ async function getElevation() {
     if (query.status !== 200) return;
     const data = await query.json();
     // Display the longitude and latitude values
-    lngDisplay.textContent = lng.toFixed(9);
-    latDisplay.textContent = lat.toFixed(9);
+    lngDisplay.textContent = lng.toFixed(5);
+    latDisplay.textContent = lat.toFixed(5);
 
-    $.ajax({
-        url:'https://api.open-elevation.com/api/v1/lookup',
+    // Buat Tampilkan elevation
+    var respondEl = await $.ajax({
+        url: 'https://api.open-elevation.com/api/v1/lookup',
         data: {
-            locations: lat.toFixed(9)+','+lng.toFixed(9)
-        },
-        success:function(respond){
-            console.log(respond);
-            eleDisplay.textContent = `${respond.results[0].elevation} mdpl`;
+            locations: lat.toFixed(5) + ',' + lng.toFixed(5)
         }
-        
     })
-    
+    console.log(respondEl);
+    var eleDisplay = respondEl.results[0].elevation;
+    $('#ele').text(eleDisplay + " mdpl");
 
+    // Untuk Tampilkan iklim
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-    $.ajax({
-        url:'https://api.openweathermap.org/data/2.5/forecast',
-        data:{
+    var respondIklim = await $.ajax({
+        url: 'https://api.openweathermap.org/data/2.5/forecast',
+        data: {
             lat: lat.toFixed(5),
             lon: lng.toFixed(5),
             appid: '4cfffc39110ea2ff21e427fdc0988f41',
             units: 'metric'
         },
-        success:function(respond){
-            console.log(respond);
-            // Curah hujan / 3 jam  dalam 5 hari * 6 = 30 hari
-            var totalCurahHujan = 0;
-            var totalKelembapan = 0;
-            var totalSuhu = 0;
-            respond.list.forEach(data => {
-                if(data.rain){
-                    totalCurahHujan += data.rain['3h'];
-                }
-                totalKelembapan += data.main.humidity
-                totalSuhu += data.main.temp
-            })
-            totalCurahHujan = totalCurahHujan / 5 * 30;
-            totalKelembapan = totalKelembapan / respond.list.length;
-            totalSuhu = totalSuhu / respond.list.length;
-            totalCurahHujan = totalCurahHujan.toFixed(2)
-            totalKelembapan = totalKelembapan.toFixed(2)
-            totalSuhu = totalSuhu.toFixed(2)
-            $('#curahHujan').text(function(){
-                return totalCurahHujan + " mm/bln";
-            });
-            $('#kelembapan').text(function(){
-                return totalKelembapan + " %";
-            });
-            $('#suhu').text(function(){
-                return totalSuhu + " C"
-            });
+    })
+    console.log(respondIklim);
+    // Curah hujan / 3 jam  dalam 5 hari * 6 = 30 hari
+    // var totalCurahHujan = 0;
+    var totalKelembapan = 0;
+    var totalSuhu = 0;
+    respondIklim.list.forEach(data => {
+        // if (data.rain) {
+        //     totalCurahHujan += data.rain['3h'];
+        // }
+        totalKelembapan += data.main.humidity
+        totalSuhu += data.main.temp
+    })
+    // totalCurahHujan = totalCurahHujan / 5 * 30;
+    totalKelembapan = totalKelembapan / respondIklim.list.length;
+    totalSuhu = totalSuhu / respondIklim.list.length;
+    // totalCurahHujan = totalCurahHujan.toFixed(2)
+    totalKelembapan = totalKelembapan.toFixed(2)
+    totalSuhu = totalSuhu.toFixed(2)
+    // Tidak bisa dipake karena ini untuk data harian
+    // $('#curahHujan').text(totalCurahHujan + " mm/bln");
+    $('#kelembapan').text(totalKelembapan + " %");
+    $('#suhu').text(totalSuhu + " C");
+
+    var curahHujan = await $.ajax({
+        url: baseUrl + 'Beranda/curahHujan',
+        data: {
+            lat: lat.toFixed(5),
+            lon: lng.toFixed(5)
         }
     })
+    console.log(curahHujan);
+    $('#curahHujan').text(curahHujan.Hujan + " mm/bln");
 
-    
-}
+    var daftarKomoditi = await $.ajax({
+        url: baseUrl + 'Beranda/cek',
+        data: {
+            lat: lat.toFixed(5),
+            lon: lng.toFixed(5),
+            hujan: curahHujan.Hujan,
+            suhu: totalSuhu,
+            kelembapan: totalKelembapan,
+            tanah: eleDisplay
+        },
+        type: "post"
+    })
+    console.log(daftarKomoditi);
+
+    $('#hasilKomoditas tbody').html('');
+    daftarKomoditi.forEach(function (row) {
+        $('#hasilKomoditas tbody').append(`
+            <tr>
+                <td>${row.Komoditas}</td>
+                <td>${row.HujanMin} - ${row.HujanMax} mm/bln</td>
+                <td>${row.KelembapanMin} - ${row.KelembapanMax} %</td>
+                <td>${row.SuhuMin} - ${row.SuhuMax} °C</td>
+                <td>${row.TanahMin} - ${row.TanahMax} mdpl</td>
+            </tr>
+        `);
+    })
+
+    $('#hasilKomoditas').fadeIn();
+} 

@@ -152,7 +152,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Komoditas yang Cocok</h6>
                                 </div>
                                 <div class="card-body py-2">
-                                    <table class="table table-bordered">
+                                    <table id="hasilKomoditas" class="table table-bordered">
                                         
                                         <thead>
                                             <tr>
@@ -164,13 +164,6 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <td>5</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -202,18 +195,12 @@
         <!-- Core plugin JavaScript-->
         <script src="<?php echo base_url() ?>asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="<?php echo base_url() ?>asset/js/sb-admin-2.min.js"></script>
-
-        <!-- Page level plugins -->
-        <script src="<?php echo base_url() ?>asset/vendor/chart.js/Chart.min.js"></script>
-
-        <!-- Page level custom scripts -->
-        <script src="<?php echo base_url() ?>asset/js/demo/chart-area-demo.js"></script>
-        <script src="<?php echo base_url() ?>asset/js/demo/chart-pie-demo.js"></script>
+        <script>
+            const baseUrl = '<?= base_url() ?>'
+        </script>
 
         <!-- Map Js -->
-        <script src="<?php echo base_url() ?>asset\script.js"></script>
+        <script src="<?php echo base_url() ?>asset/script.js"></script>
 
 </body>
 

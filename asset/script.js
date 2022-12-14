@@ -3,19 +3,19 @@ const map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
     center: [119.48065582151219, -5.1948511155886195], // starting position [lng, lat]
-    zoom: 11.5 // starting zoom
+    zoom: 10 // starting zoom
 });
 
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
-let lng;
-let lat;
-const lngDisplay = document.getElementById('lng');
-const latDisplay = document.getElementById('lat');
 const marker = new mapboxgl.Marker({
     'color': '#314ccd'
 });
 
+let lng;
+let lat;
+const lngDisplay = document.getElementById('lng');
+const latDisplay = document.getElementById('lat');
 map.on('click', (event) => {
     // Use the returned LngLat object to set the marker location
     // https://docs.mapbox.com/mapbox-gl-js/api/#lnglat
@@ -64,43 +64,33 @@ async function getWeatherData() {
     })
     console.log(respondIklim);
     // Curah hujan / 3 jam  dalam 5 hari * 6 = 30 hari
-    // var totalCurahHujan = 0;
+    var totalCurahHujan = 0;
     var totalKelembapan = 0;
     var totalSuhu = 0;
     respondIklim.list.forEach(data => {
-        // if (data.rain) {
-        //     totalCurahHujan += data.rain['3h'];
-        // }
+        if (data.rain) {
+            totalCurahHujan += data.rain['3h'];
+        }
         totalKelembapan += data.main.humidity
         totalSuhu += data.main.temp
-    })
-    // totalCurahHujan = totalCurahHujan / 5 * 30;
+    });
+    totalCurahHujan = totalCurahHujan * 6;
     totalKelembapan = totalKelembapan / respondIklim.list.length;
     totalSuhu = totalSuhu / respondIklim.list.length;
-    // totalCurahHujan = totalCurahHujan.toFixed(2)
+    totalCurahHujan = totalCurahHujan.toFixed(2)
     totalKelembapan = totalKelembapan.toFixed(2)
     totalSuhu = totalSuhu.toFixed(2)
-    // Tidak bisa dipake karena ini untuk data harian
-    // $('#curahHujan').text(totalCurahHujan + " mm/bln");
+    $('#curahHujan').text(totalCurahHujan + " mm/bln");
     $('#kelembapan').text(totalKelembapan + " %");
     $('#suhu').text(totalSuhu + " C");
 
-    var curahHujan = await $.ajax({
-        url: baseUrl + 'Beranda/curahHujan',
-        data: {
-            lat: lat.toFixed(5),
-            lon: lng.toFixed(5)
-        }
-    })
-    // console.log(curahHujan);
-    $('#curahHujan').text(curahHujan.Hujan + " mm/bln");
-
+    // Kirim data parameter ke Controller
     var daftarKomoditi = await $.ajax({
         url: baseUrl + 'Beranda/cek',
         data: {
             lat: lat.toFixed(5),
             lon: lng.toFixed(5),
-            hujan: curahHujan.Hujan,
+            hujan: totalCurahHujan,
             suhu: totalSuhu,
             kelembapan: totalKelembapan,
             tanah: eleDisplay
@@ -109,6 +99,7 @@ async function getWeatherData() {
     })
     // console.log(daftarKomoditi);
 
+    // Tampilkan Hasil Perbandingan
     if (daftarKomoditi.length == 0) {
         $('#tampilanAwal').hide();
         $('#hasilKomoditas').hide();

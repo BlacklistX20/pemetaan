@@ -25,8 +25,8 @@ class TabelModel extends CI_Model
         $this->db->delete($table);
     }
 
-    function ambil_dataIklim(){
-        return $this->db->get('iklim');
+    function ambil_dataRiwayat(){
+        return $this->db->get('riwayat');
     }
 
     public function riwayat($data, $table)

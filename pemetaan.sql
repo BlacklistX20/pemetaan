@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 04:40 AM
+-- Generation Time: Dec 14, 2022 at 02:53 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -20,62 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pemetaan`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `iklim`
---
-
-CREATE TABLE `iklim` (
-  `ID` int(11) NOT NULL,
-  `Latitude` decimal(5,2) NOT NULL,
-  `Longitude` decimal(5,2) NOT NULL,
-  `Bulan` int(2) NOT NULL,
-  `Hujan` decimal(5,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `iklim`
---
-
-INSERT INTO `iklim` (`ID`, `Latitude`, `Longitude`, `Bulan`, `Hujan`) VALUES
-(1, '-5.25', '119.25', 1, '385.02'),
-(2, '-5.25', '119.25', 2, '272.66'),
-(3, '-5.25', '119.25', 3, '282.97'),
-(4, '-5.25', '119.25', 4, '153.16'),
-(5, '-5.25', '119.25', 5, '76.90'),
-(6, '-5.25', '119.25', 6, '70.18'),
-(7, '-5.25', '119.25', 7, '32.74'),
-(8, '-5.25', '119.25', 8, '36.17'),
-(9, '-5.25', '119.25', 9, '30.59'),
-(10, '-5.25', '119.25', 10, '71.34'),
-(11, '-5.25', '119.25', 11, '195.24'),
-(12, '-5.25', '119.25', 12, '456.10'),
-(13, '-5.25', '119.75', 1, '380.86'),
-(14, '-5.25', '119.75', 2, '260.80'),
-(15, '-5.25', '119.75', 3, '281.26'),
-(16, '-5.25', '119.75', 4, '151.05'),
-(17, '-5.25', '119.75', 5, '98.03'),
-(18, '-5.25', '119.75', 6, '89.45'),
-(19, '-5.25', '119.75', 7, '44.91'),
-(20, '-5.25', '119.75', 8, '47.99'),
-(21, '-5.25', '119.75', 9, '36.89'),
-(22, '-5.25', '119.75', 10, '68.66'),
-(23, '-5.25', '119.75', 11, '200.30'),
-(24, '-5.25', '119.75', 12, '412.26'),
-(25, '-5.25', '120.25', 1, '344.00'),
-(26, '-5.25', '120.25', 2, '233.88'),
-(27, '-5.25', '120.25', 3, '261.88'),
-(28, '-5.25', '120.25', 4, '145.42'),
-(29, '-5.25', '120.25', 5, '121.33'),
-(30, '-5.25', '120.25', 6, '112.90'),
-(31, '-5.25', '120.25', 7, '60.41'),
-(32, '-5.25', '120.25', 8, '57.10'),
-(33, '-5.25', '120.25', 9, '43.10'),
-(34, '-5.25', '120.25', 10, '63.76'),
-(35, '-5.25', '120.25', 11, '192.13'),
-(36, '-5.25', '120.25', 12, '357.52');
 
 -- --------------------------------------------------------
 
@@ -125,8 +69,11 @@ CREATE TABLE `syarat` (
 --
 
 INSERT INTO `syarat` (`ID`, `Komoditas`, `HujanMin`, `HujanMax`, `KelembapanMin`, `KelembapanMax`, `SuhuMin`, `SuhuMax`, `TanahMin`, `TanahMax`) VALUES
-(2, 'Jagung', 100, 200, 0, 42, 25, 27, 0, 900),
-(3, 'Semangka', 40, 50, 70, 100, 0, 25, 100, 300);
+(1, 'Padi', 100, 230, 76, 86, 19, 27, 0, 1500),
+(2, 'Jagung', 85, 200, 78, 83, 21, 34, 50, 1800),
+(3, 'Semangka', 40, 50, 40, 60, 25, 30, 0, 600),
+(4, 'Bawang Merah', 30, 250, 50, 70, 25, 32, 0, 1000),
+(5, 'Cabai', 80, 250, 60, 80, 16, 32, 0, 1400);
 
 -- --------------------------------------------------------
 
@@ -153,12 +100,6 @@ INSERT INTO `user` (`ID`, `Username`, `Password`) VALUES
 --
 
 --
--- Indexes for table `iklim`
---
-ALTER TABLE `iklim`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indexes for table `riwayat`
 --
 ALTER TABLE `riwayat`
@@ -181,12 +122,6 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `iklim`
---
-ALTER TABLE `iklim`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
 -- AUTO_INCREMENT for table `riwayat`
 --
 ALTER TABLE `riwayat`
@@ -196,7 +131,7 @@ ALTER TABLE `riwayat`
 -- AUTO_INCREMENT for table `syarat`
 --
 ALTER TABLE `syarat`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

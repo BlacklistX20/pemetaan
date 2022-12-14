@@ -13,9 +13,14 @@ class Admin extends CI_Controller {
         $this->load->model('TabelModel');
 	}
  
-	function index(){
+    public function index()
+    {
+        $this->load->view('admin');
+    }
+
+	function syarat(){
         $data['tabel'] = $this->TabelModel->ambil_data()->result();
-        $this->load->view('admin',$data);
+        $this->load->view('admin_syarat',$data);
 	}
 
     public function tambah_syarat()
@@ -42,7 +47,7 @@ class Admin extends CI_Controller {
             'TanahMax' => $tmx
 			);
 		$this->TabelModel->input_data($data,'syarat');
-		redirect('admin/index');
+		redirect('admin/syarat');
     }
 
     public function ambil_dataId($idSyarat)
@@ -75,24 +80,19 @@ class Admin extends CI_Controller {
             'TanahMax' => $tmx
 			);
 		$this->TabelModel->edit_data($idSyarat, $data,'syarat');
-		redirect('admin/index');
+		redirect('admin/syarat');
     }
 
     function hapus($id){
 		$where = array('id' => $id);
 		$this->TabelModel->hapus_data($where,'syarat');
-		redirect('Admin/index');
+		redirect('admin/syarat');
 	}
 
     public function riwayat ()
     {
-        $this->load->view('admin_riwayat');
-    }
-
-    public function iklim ()
-    {
-        $data['tabel'] = $this->TabelModel->ambil_dataIklim()->result();
-        $this->load->view('admin_iklim', $data);
+        $data['tabel'] = $this->TabelModel->ambil_dataRiwayat()->result();
+        $this->load->view('admin_riwayat', $data);
     }
 
     public function ambil_data ()

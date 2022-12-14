@@ -8,27 +8,6 @@ class Beranda extends CI_Controller {
         $this->load->view('beranda');
     }
 
-    public function curahHujan()
-    {
-        // echo json_encode($this->input->get());
-        $lat = $this->input->get('lat');
-        $lon = $this->input->get('lon');
-        $bln = date('m');
-        $lebih = round($lon, 2);
-        $lebih = substr($lebih, 4);
-        
-        if(0 <= $lebih && $lebih <= 50)
-            $lebih = 25;
-        else
-            $lebih = 75;
-
-        $lonAsli = substr($lon, 0, -6) . '.' . $lebih;
-        $this->load->model('PerbandinganModel');
-        $data = $this->PerbandinganModel->cekHujan($lonAsli, $bln);
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($data);
-    }
-
     public function cek()
     {
         $tgl = date('Y-m-d H:i:s');

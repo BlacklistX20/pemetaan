@@ -51,18 +51,37 @@
                     </div>
 
                     <!-- Content -->
-                    <table class="table table-bordered text-center table-striped">
-                        <thead>
-                            <tr>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <td>Tanggal</td>
+                                            <td>Koordinat</td>
+                                            <td>Curah Hujan (mm/bln)</td>
+                                            <td>Kelembapan (%)</td>
+                                            <td>Suhu (C)</td>
+                                            <td>Ketinggian Tanah (mdpl)</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($tabel as $tes) { ?>
+                                            <tr>
+                                                <td><?php echo $tes->Tanggal ?></td>
+                                                <td><?php echo $tes->Latitude . " - " . $tes->Longitude ?></td>
+                                                <td><?php echo $tes->Hujan ?></td>
+                                                <td><?php echo $tes->Kelembapan ?></td>
+                                                <td><?php echo $tes->Suhu ?></td>
+                                                <td><?php echo $tes->Tanah ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
 
                 </div>
                 <!-- End of page Content -->

@@ -62,7 +62,9 @@
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <h4 class="modal-title ml-2">LOG IN</h4>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <i class="fa fa-times"></i>
+                                        </button>
                                     </div>
 
                                     <!-- Modal body -->

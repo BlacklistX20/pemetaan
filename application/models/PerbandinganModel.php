@@ -2,13 +2,6 @@
 
 class PerbandinganModel extends CI_Model
 {
-    public function cekHujan($lon, $bln)
-    {
-        $this->db->where('Longitude', $lon);
-        $this->db->where('Bulan', $bln);
-        return $this->db->get('iklim')->row_array();
-    }
-
     public function cekKomoditi(float $hujan, float $suhu, float $kelembapan, float $tanah)
     {
         $this->db->where("HujanMin <= $hujan AND HujanMax >= $hujan");

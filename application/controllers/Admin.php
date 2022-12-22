@@ -100,4 +100,10 @@ class Admin extends CI_Controller {
         $data['tabel'] = $this->TabelModel->ambil_data()->row_array();
         echo json_encode($data);
     }
+
+    public function profile ()
+    {
+        $this->load->view('admin_profile');
+    }
+
 }

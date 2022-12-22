@@ -14,9 +14,6 @@
     <link href="<?php echo base_url() ?>asset/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <!-- W3.css-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
     <!-- Map Box-->
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
@@ -206,7 +203,7 @@
             const baseUrl = '<?= base_url() ?>'
         </script>
 
-        <!-- Map Js -->
+        <!-- Costum Javascipt -->
         <script src="<?php echo base_url() ?>asset/script.js"></script>
 
 </body>

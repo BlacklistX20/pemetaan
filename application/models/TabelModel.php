@@ -33,4 +33,9 @@ class TabelModel extends CI_Model
     {
         $this->db->insert($table,$data);
     }
+
+    public function ambil_dataUser()
+    {
+        return $this->db->get('user');
+    }
 }

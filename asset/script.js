@@ -46,7 +46,7 @@ async function getWeatherData() {
         data: {
             locations: lat.toFixed(5) + ',' + lng.toFixed(5)
         }
-    })
+    });
     console.log(respondEl);
     var eleDisplay = respondEl.results[0].elevation;
     $('#ele').text(eleDisplay + " mdpl");
@@ -61,7 +61,7 @@ async function getWeatherData() {
             appid: '4cfffc39110ea2ff21e427fdc0988f41',
             units: 'metric'
         },
-    })
+    });
     console.log(respondIklim);
     // Curah hujan / 3 jam  dalam 5 hari * 6 = 30 hari
     var totalCurahHujan = 0;
@@ -77,9 +77,9 @@ async function getWeatherData() {
     totalCurahHujan = totalCurahHujan * 6;
     totalKelembapan = totalKelembapan / respondIklim.list.length;
     totalSuhu = totalSuhu / respondIklim.list.length;
-    totalCurahHujan = totalCurahHujan.toFixed(2)
-    totalKelembapan = totalKelembapan.toFixed(2)
-    totalSuhu = totalSuhu.toFixed(2)
+    totalCurahHujan = totalCurahHujan.toFixed(2);
+    totalKelembapan = totalKelembapan.toFixed(2);
+    totalSuhu = totalSuhu.toFixed(2);
     $('#curahHujan').text(totalCurahHujan + " mm/bln");
     $('#kelembapan').text(totalKelembapan + " %");
     $('#suhu').text(totalSuhu + " C");
@@ -96,7 +96,7 @@ async function getWeatherData() {
             tanah: eleDisplay
         },
         type: "post"
-    })
+    });
     // console.log(daftarKomoditi);
 
     // Tampilkan Hasil Perbandingan
@@ -120,7 +120,7 @@ async function getWeatherData() {
         $('#tampilanAwal').hide();
         $('#tidakCocok').hide();
         $('#hasilKomoditas').fadeIn();
-    }
+    };
 
     
-} 
+};

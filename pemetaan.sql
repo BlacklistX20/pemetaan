@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2022 at 02:53 AM
+-- Generation Time: Dec 24, 2022 at 08:05 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -84,6 +84,7 @@ INSERT INTO `syarat` (`ID`, `Komoditas`, `HujanMin`, `HujanMax`, `KelembapanMin`
 CREATE TABLE `user` (
   `ID` int(11) NOT NULL,
   `Username` varchar(255) NOT NULL,
+  `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -91,9 +92,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Username`, `Password`) VALUES
-(1, 'Syafrul', 'admin01'),
-(2, 'Abdul', 'admin02');
+INSERT INTO `user` (`ID`, `Username`, `Email`, `Password`) VALUES
+(1, 'Syafrul', 'a.syafrul.aswar20@gmail.com', 'admin01'),
+(2, 'Abdul', 'abdullahy552@gmail.com', 'admin02');
 
 --
 -- Indexes for dumped tables

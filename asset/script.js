@@ -12,6 +12,14 @@ const marker = new mapboxgl.Marker({
     'color': '#314ccd'
 });
 
+// Add geolocate control to the map.
+map.addControl(
+    new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+    }})
+);
+
 let lng;
 let lat;
 const lngDisplay = document.getElementById('lng');
@@ -42,7 +50,7 @@ async function getWeatherData() {
 
     // Buat Tampilkan elevation
     var respondEl = await $.ajax({
-        url: 'https://api.open-elevation.com/api/v1/lookup',
+        url: 'https://api.opentopodata.org/v1/test-dataset',
         data: {
             locations: lat.toFixed(5) + ',' + lng.toFixed(5)
         }

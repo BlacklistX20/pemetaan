@@ -15,9 +15,10 @@ const marker = new mapboxgl.Marker({
 // Add geolocate control to the map.
 map.addControl(
     new mapboxgl.GeolocateControl({
-    positionOptions: {
-    enableHighAccuracy: true
-    }})
+        positionOptions: {
+            enableHighAccuracy: true
+        }
+    })
 );
 
 let lng;
@@ -50,7 +51,7 @@ async function getWeatherData() {
 
     // Buat Tampilkan elevation
     var respondEl = await $.ajax({
-        url: 'https://api.opentopodata.org/v1/test-dataset',
+        url: `${baseUrl}beranda/getLat`,
         data: {
             locations: lat.toFixed(5) + ',' + lng.toFixed(5)
         }
@@ -130,5 +131,5 @@ async function getWeatherData() {
         $('#hasilKomoditas').fadeIn();
     };
 
-    
+
 };

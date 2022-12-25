@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Beranda extends CI_Controller {
+class Beranda extends CI_Controller
+{
 
     public function index()
     {
@@ -35,5 +36,26 @@ class Beranda extends CI_Controller {
         echo json_encode($data);
     }
 
+    // Fungsi ambil lat dari opendata
+    public function getLat()
+    {
+        $locations = $this->input->get('locations');
+        $ch = curl_init();
 
+        // set url 
+        curl_setopt($ch, CURLOPT_URL, "https://api.opentopodata.org/v1/test-dataset?locations=$locations");
+
+        // return the transfer as a string 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // $output contains the output string 
+        $output = curl_exec($ch);
+
+        // tutup curl 
+        curl_close($ch);
+
+        // menampilkan hasil curl
+        header('Content-Type: application/json');
+        echo $output;
+    }
 }

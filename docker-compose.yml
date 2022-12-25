@@ -1,0 +1,48 @@
+version: '3'
+services:
+  web:
+    image: sunasteriskrnd/php:8.0-nginx-alpine
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/.git
+    environment:
+      DB_HOSTNAME: db
+      DB_NAME: pemetaan
+      DB_USERNAME: admin
+      DB_PASSWORD: admin123
+      ENVIRONMENT: 'development'
+      BASE_URL: 'http://localhost'
+      TZ: Asia/Makassar
+    networks:
+      - website
+
+  db:
+    image: mysql:5.7
+    hostname: db
+    volumes:
+      - ./pemetaan.sql:/docker-entrypoint-initdb.d/pemetaan.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+      MYSQL_DATABASE: pemetaan
+      TZ: UTC
+    ports:
+      - 3306:3306
+    networks:
+      - website
+      - backend
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+    networks:
+      - backend
+
+networks:
+  website:
+  backend:

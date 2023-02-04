@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -57,7 +56,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Jumlah Komoditas</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $komoditas ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-seedling fa-2x text-gray-300"></i>
@@ -91,7 +90,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Jumlah Penggunaan</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">50</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $riwayat ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-history fa-2x text-gray-300"></i>

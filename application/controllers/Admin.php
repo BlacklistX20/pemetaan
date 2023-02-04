@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
-    function __construct(){
+    public function __construct(){
 		parent::__construct();
 	
 		if($this->session->userdata('status') != "login"){
@@ -15,10 +15,12 @@ class Admin extends CI_Controller {
  
     public function index()
     {
-        $this->load->view('admin');
+        $data['komoditas'] = $this->TabelModel->hitung_data('syarat');
+        $data['riwayat'] = $this->TabelModel->hitung_data('riwayat');
+        $this->load->view('admin', $data);
     }
 
-	function syarat(){
+	public function syarat(){
         $data['tabel'] = $this->TabelModel->ambil_data()->result();
         $this->load->view('admin_syarat',$data);
 	}
@@ -83,22 +85,16 @@ class Admin extends CI_Controller {
 		redirect('admin/syarat');
     }
 
-    function hapus($id){
+    public function hapus($id){
 		$where = array('id' => $id);
 		$this->TabelModel->hapus_data($where,'syarat');
 		redirect('admin/syarat');
 	}
 
-    public function riwayat ()
+    public function riwayat()
     {
         $data['tabel'] = $this->TabelModel->ambil_dataRiwayat()->result();
         $this->load->view('admin_riwayat', $data);
-    }
-
-    public function ambil_data ()
-    {
-        $data['tabel'] = $this->TabelModel->ambil_data()->row_array();
-        echo json_encode($data);
     }
 
     public function profile ()

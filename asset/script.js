@@ -49,15 +49,21 @@ async function getWeatherData() {
     lngDisplay.textContent = lng.toFixed(5);
     latDisplay.textContent = lat.toFixed(5);
 
-    // Buat Tampilkan elevation
-    var respondEl = await $.ajax({
-        url: `${baseUrl}beranda/getLat`,
-        data: {
-            locations: lat.toFixed(5) + ',' + lng.toFixed(5)
-        }
-    });
-    console.log(respondEl);
-    var eleDisplay = respondEl.results[0].elevation;
+    // Tampilkan Elevation Mapbox
+    const allFeatures = data.features;
+    const elevations = allFeatures.map((feature) => feature.properties.ele);
+    const highestElevation = Math.max(...elevations);
+    var eleDisplay = `${highestElevation}`;
+
+    // Buat Tampilkan elevation API
+    // var respondEl = await $.ajax({
+    //     url: `${baseUrl}beranda/getLat`,
+    //     data: {
+    //         locations: lat.toFixed(5) + ',' + lng.toFixed(5)
+    //     }
+    // });
+    // console.log(respondEl);
+    // var eleDisplay = respondEl.results[0].elevation;
     $('#ele').text(eleDisplay + " mdpl");
 
     // Untuk Tampilkan iklim
@@ -130,6 +136,5 @@ async function getWeatherData() {
         $('#tidakCocok').hide();
         $('#hasilKomoditas').fadeIn();
     };
-
 
 };

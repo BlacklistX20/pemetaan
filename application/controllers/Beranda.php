@@ -9,6 +9,12 @@ class Beranda extends CI_Controller
         $this->load->view('beranda');
     }
 
+    public function komoditas(){
+        $this->load->model('TabelModel');
+        $data['tabel'] = $this->TabelModel->ambil_data()->result();
+        $this->load->view('komoditas',$data);
+	}
+
     public function cek()
     {
         $tgl = date('Y-m-d H:i:s');
@@ -29,7 +35,7 @@ class Beranda extends CI_Controller
             'Tanah' => $tanah
         );
         $this->load->model('TabelModel');
-        // $this->TabelModel->riwayat($data, 'riwayat');
+        //$this->TabelModel->riwayat($data, 'riwayat');
         $this->load->model('PerbandinganModel');
         $data = $this->PerbandinganModel->cekKomoditi($hujan, $suhu, $kelembapan, $tanah);
         header('Content-Type: application/json; charset=utf-8');
@@ -37,25 +43,25 @@ class Beranda extends CI_Controller
     }
 
     // Fungsi ambil lat dari opendata
-    public function getLat()
-    {
-        $locations = $this->input->get('locations');
-        $ch = curl_init();
+    // public function getLat()
+    // {
+    //     $locations = $this->input->get('locations');
+    //     $ch = curl_init();
 
-        // set url 
-        curl_setopt($ch, CURLOPT_URL, "https://api.opentopodata.org/v1/test-dataset?locations=$locations");
+    //     // set url 
+    //     curl_setopt($ch, CURLOPT_URL, "https://api.open-elevation.com/api/v1/lookup?locations=$locations");
 
-        // return the transfer as a string 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //     // return the transfer as a string 
+    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // $output contains the output string 
-        $output = curl_exec($ch);
+    //     // $output contains the output string 
+    //     $output = curl_exec($ch);
 
-        // tutup curl 
-        curl_close($ch);
+    //     // tutup curl 
+    //     curl_close($ch);
 
-        // menampilkan hasil curl
-        header('Content-Type: application/json');
-        echo $output;
-    }
+    //     // menampilkan hasil curl
+    //     header('Content-Type: application/json');
+    //     echo $output;
+    // }
 }

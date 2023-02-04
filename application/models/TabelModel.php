@@ -2,15 +2,20 @@
 
 class TabelModel extends CI_Model
 {
-    function ambil_data(){
+    public function hitung_data($table)
+    {
+        return $this->db->count_all_results($table);
+    }
+
+    public function ambil_data(){
         return $this->db->get('syarat');
     }
 
-    function input_data($data,$table){
+    public function input_data($data,$table){
 		$this->db->insert($table,$data);
 	}
 
-    function ambil_dataId($where,$table){		
+    public function ambil_dataId($where,$table){		
         return $this->db->get_where($table,$where);
     }
 
@@ -20,12 +25,12 @@ class TabelModel extends CI_Model
         $this->db->update($table,$data);
     }
 
-    function hapus_data($where,$table){
+    public function hapus_data($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    function ambil_dataRiwayat(){
+    public function ambil_dataRiwayat(){
         return $this->db->get('riwayat');
     }
 
@@ -37,5 +42,10 @@ class TabelModel extends CI_Model
     public function ambil_dataUser()
     {
         return $this->db->get('user');
+    }
+
+    public function jumlah_syarat()
+    {
+        return $this->db->table('syarat')->countAll();
     }
 }

@@ -55,6 +55,17 @@ async function getWeatherData() {
     const highestElevation = Math.max(...elevations);
     var eleDisplay = `${highestElevation}`;
 
+    // Tampilkan Iklim Database NASA
+    // var respondIklim = await $.ajax({
+    //     url: baseUrl + 'Beranda/iklim',
+    //     data: {
+    //         lon: lng.toFixed(5)
+    //     }
+    // });
+    // var totalCurahHujan = respondIklim.Hujan;
+    // var totalKelembapan = respondIklim.Kelembapan;
+    // var totalSuhu = respondIklim.Suhu;
+
     // Buat Tampilkan elevation API
     // var respondEl = await $.ajax({
     //     url: `${baseUrl}beranda/getLat`,
@@ -64,9 +75,8 @@ async function getWeatherData() {
     // });
     // console.log(respondEl);
     // var eleDisplay = respondEl.results[0].elevation;
-    $('#ele').text(eleDisplay + " mdpl");
-
-    // Untuk Tampilkan iklim
+    
+    // Untuk Tampilkan iklim API
     // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
     var respondIklim = await $.ajax({
         url: 'https://api.openweathermap.org/data/2.5/forecast',
@@ -95,6 +105,8 @@ async function getWeatherData() {
     totalCurahHujan = totalCurahHujan.toFixed(2);
     totalKelembapan = totalKelembapan.toFixed(2);
     totalSuhu = totalSuhu.toFixed(2);
+    
+    $('#ele').text(eleDisplay + " mdpl");
     $('#curahHujan').text(totalCurahHujan + " mm/bln");
     $('#kelembapan').text(totalKelembapan + " %");
     $('#suhu').text(totalSuhu + " C");

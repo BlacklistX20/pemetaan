@@ -64,4 +64,23 @@ class Beranda extends CI_Controller
     //     header('Content-Type: application/json');
     //     echo $output;
     // }
+
+    // public function iklim()
+    // {
+    //     $lon = $this->input->get('lon');
+    //     $bln = date('m');
+    //     $lebih = round($lon, 2);
+    //     $lebih = substr($lebih, 4);
+        
+    //     if(0 <= $lebih && $lebih <= 50)
+    //         $lebih = 25;
+    //     else
+    //         $lebih = 75;
+
+    //     $lonAsli = substr($lon, 0, -6) . '.' . $lebih;
+    //     $this->load->model('PerbandinganModel');
+    //     $data = $this->PerbandinganModel->cekIklim($lonAsli, $bln);
+    //     header('Content-Type: application/json; charset=utf-8');
+    //     echo json_encode($data);
+    // }
 }

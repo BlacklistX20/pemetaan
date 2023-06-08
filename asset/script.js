@@ -6,6 +6,22 @@ const map = new mapboxgl.Map({
     zoom: 10 // starting zoom
 });
 
+const geocoder = new MapboxGeocoder({
+    // Initialize the geocoder
+    accessToken: mapboxgl.accessToken, // Set the access token
+    mapboxgl: mapboxgl, // Set the mapbox-gl instance
+    zoom: 50,
+    marker: false, // Do not use the default marker style
+    placeholder: 'Cari Lokasi',
+    proximity: {
+        longitude: -5.30,
+        latitude: 119.70
+    } 
+});
+
+// Add the geocoder to the map
+map.addControl(geocoder);
+
 // Add zoom and rotation controls to the map.
 map.addControl(new mapboxgl.NavigationControl());
 const marker = new mapboxgl.Marker({
